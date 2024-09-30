@@ -1,7 +1,7 @@
 let locData; // Define locData globally so it can be accessed in displayLocation
 
 // Ensure DOM is ready before running JavaScript
-document.addEventListener('DOMContentLoaded', () => {
+cument.addEventListener('DOMContentLoaded', () => {
 
     const weather = async (location) => {
         const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${location}&days=3`;
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Event listener for button click
-    document.getElementById('enterbtn').addEventListener("click", async (e) => {
+    document.gedotElementById('enterbtn').addEventListener("click", async (e) => {
         e.preventDefault();
 
         const loc = document.getElementById('location').value.trim();  // Get user input
