@@ -1,8 +1,9 @@
-body{
+body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
-/*navbar*/
+
+/* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -29,13 +30,209 @@ body{
 
 .navbar ul li a {
     text-decoration: none;
+    position: relative;
     color: white;
-    padding: 10px;
-    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+.navbar .active{
+    text-decoration: underline;
 }
 
-.navbar ul li a:hover {
-    background-color: blue;
-    color: white;
-    border-radius: 10px;
+.navbar ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease;
+  }
+
+  .navbar ul li a:hover::after {
+    width: 100%;
+  }
+
+.newsTitle {
+    position: relative;
+    text-align: center;
+    font-family: 'Old newspaper font', sans-serif;
+    font-size: 70px;
+    margin-bottom: 20px;
+    top: -35px;
 }
+
+/* Article 1 */
+#a1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#news-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 20px; /* Space between cards */
+    width: 100%; /* Full width of the container */
+    padding: 10px; /* Reduced padding */
+    box-sizing: border-box; /* Include padding in width calculation */
+    margin-top: -30px; /* No top margin */
+}
+
+.news-card {
+    display: flex;
+    flex-direction: column; /* Stack image on top of details */
+    border: 1px solid #ddd; /* Optional border */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Ensures children don't overflow */
+    width: 100%; /* Full width of the card */
+    margin: 0; /* Remove margins */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    transition: transform 0.3s; /* Animation for hover effect */
+}
+
+.news-card:hover {
+    transform: scale(1.05);
+}
+
+.card-image {
+    flex: 1; /* Image will take some space */
+}
+
+.card-details {
+    padding: 10px;
+}
+
+.cover-image {
+    width: 100%;
+    height: auto;
+}
+
+.source-link {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.source-link:hover {
+    text-decoration: underline;
+}
+
+/*footer*/
+footer {
+    background-color: lightgray;
+    width: auto;
+    height: 150px;
+    position: relative;
+}
+.footer .getintouch{
+    position: absolute;
+    left: 50%;
+    bottom: 20%;
+    transform: translate(-50%, -50%);
+    font-family: 'Old newspaper font', sans-serif;
+    font-size: 30px;
+}
+.footer .message{
+    position: absolute;
+    left: 45%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    width: 300px;
+    height: 25px;
+    border-color: black;
+}
+.footer .submitbtn{
+    position: absolute;
+    left: 64%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 500px;
+    transition-property: background-color,border-color,color,box-shadow,filter;
+    transition-duration: .3s;
+    border: 1px solid transparent;
+    letter-spacing: 2px;
+    min-width: 160px;
+    text-transform: uppercase;
+    white-space: normal;
+    font-weight: 700;
+    text-align: center;
+    padding: 16px 14px 18px;
+    color: #616467;
+    box-shadow: inset 0 0 0 2px #616467;
+    background-color: transparent;
+    height: 48px;
+}
+.footer .submitbtn:hover{
+    color: #fff;
+    background-color: #616467;
+}
+
+.footer .copyright {
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    margin-top: 55px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    #news-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    #news-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*mobile screens */
+@media (max-width: 768px) {
+    .a1 {
+        flex-direction: column; /* Stack the image and text vertically */
+        width: 90%; /* Adjust width for smaller screens */
+        padding: 10px; /* Reduce padding */
+        top: auto;
+        left: auto;
+        transform: none; /* Remove the transform for mobile */
+        position: static; /* Makes the layout flow naturally on mobile */
+        margin-top: 20px; /* Adds spacing on top */
+    }
+
+    .image {
+        margin-right: 0; /* Remove the margin on the right */
+        margin-bottom: 10px; /* Add margin below the image for spacing */
+        display: flex;
+        justify-content: center; /* Center the image horizontally */
+    }
+
+    .cover-image {
+        max-width: 100%; /* Make the image responsive and fit the width */
+        height: auto;
+    }
+
+    .details {
+        text-align: center; /* Center the text on mobile */
+    }
+    .footer .submitbtn{
+        height: 50px;
+        left: 78%;
+    }
+    .footer .message{
+        left: 30%;
+        width: 200px;
+    }
+}
+
+

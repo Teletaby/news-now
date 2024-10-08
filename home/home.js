@@ -1,15 +1,17 @@
 const news = async () => {
-    apikey = 'd846641e3a8f6dcc4750fe8432f5d801';
-    const url = 'https://gnews.io/api/v4/search?q=example&lang=en&country=ph&max=10&apikey=' + apikey;
+    const apikey = 'd846641e3a8f6dcc4750fe8432f5d801';
+    const url = 'https://gnews.io/api/v4/top-headlines?category=nation&lang=en&country=ph&max=8&apikey=' + apikey;
 
     try {
         const response = await fetch(url);
-        const result = await response.json();  // Parse the data into JSON format
+        const result = await response.json();
 
         const articles = result.articles.map(article => ({
+            image: article.image,
             title: article.title,
             description: article.description,
-            source: article.source.name
+            source: article.source.name,
+            url: article.url
         }));
 
         console.log(articles);
@@ -22,19 +24,35 @@ const news = async () => {
     }
 };
 
-// Function to display the first news article's title and description in the <p> tags
+// Function to display multiple news articles
 const displayNews = (articles) => {
-    if (articles.length > 0) {
-        const firstArticle = articles[0];
+    const container = document.getElementById('news-container');
+    container.innerHTML = ''; // Clear previous articles
 
-        const titleElement = document.getElementById('title');
-        const descElement = document.getElementById('desc');
-        const sourceElement = document.getElementById('source');
+    for (let i = 0; i < Math.min(8, articles.length); i++) {
+        const article = articles[i];
 
-        titleElement.innerText = firstArticle.title;
-        descElement.innerText = firstArticle.description;
-        sourceElement.innerText = firstArticle.source.name
-    } else {
+        // Create a new card div for each article
+        const cardDiv = document.createElement('div');
+        cardDiv.classList.add('news-card');
+
+        // Create the HTML structure for the card
+        cardDiv.innerHTML = `
+            <div class="card-image">
+                <img src="${article.image}" class="cover-image">
+            </div>
+            <div class="card-details">
+                <h3>${article.title}</h3>
+                <p>${article.description}</p>
+                <p><a href="${article.url}" target="_blank" class="source-link">${article.source}</a></p>
+            </div>
+        `;
+
+        // Append the card div to the container
+        container.appendChild(cardDiv);
+    }
+
+    if (articles.length === 0) {
         alert("No news articles available.");
     }
 };

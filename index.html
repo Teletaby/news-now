@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Now</title>
     <link rel="stylesheet" href="home/home.css">
+    <!--font-->
+    <link href="https://fonts.cdnfonts.com/css/old-newspaper" rel="stylesheet">
 </head>
 <body>
 <div class="navbar">
@@ -14,11 +16,27 @@
         <li href="#"><a href="/weather_search/search.html">WEATHER</a></li>
         <li href="#"><a href="#">SEARCH</a></li>
     </ul>
-</div>
-<p id="title"></p>
-<p id="desc"></p>
-<p id="source"></p>
-
+    </div>
+    <h1 class="newsTitle">Headline PILIPINAS</h1>
+    <div class="a1" id="news-container">
+        <div class="image">
+            <img id="img" src="" alt="Cover Image" class="cover-image">
+        </div>
+        <div class="details">
+            <h3 id="title"></h1>
+            <p id="desc"></p>
+            <p id="source"></p>
+        </div>
+    </div>
+    <footer class="footer">
+        <h5 class="getintouch">Message Us</h5>
+        <div class="sidebyside"></div>
+            <input id="message" class="message" type="text" placeholder="message">
+            <button class="submitbtn" type="button">Submit</button>
+        </div>
+        <p class="copyright">JGutierrez | data from GNEWS</p>
+    </footer>
+    
 <script src="/home/home.js"></script> 
 </body>
 </html>

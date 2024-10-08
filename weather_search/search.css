@@ -1,6 +1,8 @@
 body{
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    background-image: url('/resources/rain_back.jpg');
+    background-size: cover;
 }
 /*navbar*/
 .navbar {
@@ -29,13 +31,85 @@ body{
 
 .navbar ul li a {
     text-decoration: none;
+    position: relative;
     color: white;
-    padding: 10px;
-    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+.navbar .active{
+    text-decoration: underline;
 }
 
-.navbar ul li a:hover {
-    background-color: blue;
-    color: white;
+.navbar ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease;
+  }
+
+  .navbar ul li a:hover::after {
+    width: 100%;
+  }
+
+/*center*/
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 90vh; 
+    position: relative;
+    text-align: center;
+    
+}
+.center .info{
+    background-color: rgba(44, 40, 40, 0.5);
+    color: #fff;
     border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px 20px;
+}
+.center .searchint{
+    width: 60%;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-bottom: 35px;
+}
+/*button*/
+.button-32 {
+  background-color: #fff000;
+  border-radius: 12px;
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px 15px;
+  text-align: center;
+  transition: 200ms;
+  width: 30%;
+  box-sizing: border-box;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-32:not(:disabled):hover,
+.button-32:not(:disabled):focus {
+  outline: 0;
+  background: #f4e603;
+  box-shadow: 0 0 0 2px rgba(0,0,0,.2), 0 3px 8px 0 rgba(0,0,0,.15);
+}
+
+.button-32:disabled {
+  filter: saturate(0.2) opacity(0.5);
+  -webkit-filter: saturate(0.2) opacity(0.5);
+  cursor: not-allowed;
 }
